@@ -15,24 +15,19 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
+import c.bilgin.chatapplication.Firebase;
 import c.bilgin.chatapplication.News;
 import c.bilgin.chatapplication.R;
 
 public class HomeFragment extends Fragment {
 
     private Context mContext;
-    private DatabaseReference ref = FirebaseDatabase.getInstance().getReference("News");
     private List<News> arrNews = new ArrayList<>();
     private FrameLayout frameLayout;
     private ImageView imageView;
@@ -40,11 +35,12 @@ public class HomeFragment extends Fragment {
     private TextView txtTitle,txtDescription;
     private String picked ="AI";
     private News n;
+    private Firebase f = new Firebase("News",News.class);
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getNewsData();
+        f.getData(arrNews);
     }
 
     @Override
@@ -130,20 +126,6 @@ public class HomeFragment extends Fragment {
 
 
 
-    private void getNewsData(){
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot sp : dataSnapshot.getChildren())
-                    arrNews.add(sp.getValue(News.class));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     private News findNewsObject(String pick){
         for(News n : arrNews)

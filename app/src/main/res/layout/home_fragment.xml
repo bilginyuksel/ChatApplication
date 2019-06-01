@@ -38,7 +38,7 @@
             android:layout_weight="2.5"
             android:layout_margin="20dp"
             android:id="@+id/title"
-            android:text="Compose"/>
+            android:text="Title"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
