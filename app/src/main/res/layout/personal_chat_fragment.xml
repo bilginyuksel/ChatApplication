@@ -1,22 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DCDCDC">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#191970"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:text="Personal Chat"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
         android:orientation="vertical">
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/add_personal_chat_button"
-            android:src="@drawable/ic_launcher_background"/>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:weightSum="1"
+           android:paddingRight="20dp"
+           android:paddingBottom="20dp"
+           android:paddingTop="20dp"
+           android:orientation="horizontal">
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="15dp"
+               android:layout_marginLeft="25dp"
+               android:background="@drawable/news_linear_layout"
+               android:orientation="horizontal"
+               android:layout_weight="1">
+
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="15dp"
+                   android:layout_marginLeft="10dp"
+                   android:background="@drawable/magnifying_glass_1_"
+                   />
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginRight="10dp"
+                   android:layout_marginLeft="5dp"
+                   android:hint="Search Chat"
+                   android:id="@+id/personalChatSearchText" />
+           </LinearLayout>
+           <ImageButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="8dp"
+               android:background="@drawable/chat_new_icon"
+               android:id="@+id/personalChatPlusButton"
+               />
+
+       </LinearLayout>
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="70dp"
+            android:clickable="true"
             android:id="@+id/personalChatList">
         </ListView>
 
 
-    </RelativeLayout>
+    </LinearLayout>
 </FrameLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    android:id="@+id/linLay"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:elevation="10dp"
+        android:id="@+id/view2"
+        app:cardCornerRadius="60dp"
+        android:layout_gravity="center"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="1.9">
+        <ImageButton
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/imgProfilePhoto"
+            android:scaleType="fitCenter"
+            android:src="@drawable/dpu_ai_team"
+            android:background="#DCDCDC"
+            >
+        </ImageButton>
+    </android.support.v7.widget.CardView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:id="@+id/txtUserName"
+        android:text="Current User Name"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textStyle="italic"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            android:id="@+id/txtEmail"
+            android:layout_marginTop="10dp"
+            android:text="User Email"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/txtGroups"
+            android:textSize="17dp"
+            android:text="User Groups"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            android:layout_marginTop="10dp"
+            android:text="Answered Questions"/>
+
+
+
+    </LinearLayout>
+
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:gravity="bottom"
+       android:orientation="vertical">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="18dp"
+           android:textColor="#000"
+           android:layout_marginTop="50dp"
+           android:text="If you are admin you can send message to all users"/>
+       <EditText
+           android:layout_marginTop="5dp"
+           android:layout_width="match_parent"
+           android:id="@+id/etFCMMessage"
+           android:layout_height="wrap_content" />
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/btnSend"
+           android:text="Send Message to all"/>
+   </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="#DCDCDC"
+    android:orientation="vertical"
+    tools:context=".ChatPage">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/chatImage" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="sans-serif-medium"
+            android:id="@+id/pcWithWho"
+            android:textColor="#2F4F4F"
+            android:textSize="25dp"
+            android:text="Unknown Person"/>
+
+    </LinearLayout>
+    <ListView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#DCDCDC"
+        android:dividerHeight="10dp"
+        android:id="@+id/lstViewMessages"
+        android:layout_weight="1"
+        ></ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:weightSum="3"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/news_linear_layout"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2.7"
+            android:hint="Type a message..."
+            android:layout_height="wrap_content"
+            android:id="@+id/etMessage"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:id="@+id/btnSendMessage"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/send_button"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

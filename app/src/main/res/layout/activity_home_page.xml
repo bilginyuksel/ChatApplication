@@ -8,11 +8,12 @@
     tools:context=".HomePage">
 
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/layout"
-        android:id="@+id/layout">
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation">
 
     </LinearLayout>
 

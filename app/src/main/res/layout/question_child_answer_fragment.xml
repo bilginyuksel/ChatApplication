@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#DCDCDC"
     android:layout_height="match_parent">
 
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:text="QUESTION CHILD ANSWER FRAGMENT"/>
+        android:id="@+id/lstAnswer"></ListView>
 
 </FrameLayout>

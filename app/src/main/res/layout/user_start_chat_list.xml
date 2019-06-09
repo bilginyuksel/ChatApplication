@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:padding="15dp"
+       android:orientation="vertical">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginRight="15dp"
+           android:layout_marginLeft="15dp"
+           android:background="@drawable/news_linear_layout"
+           android:orientation="horizontal">
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="15dp"
+               android:layout_marginLeft="10dp"
+               android:background="@drawable/magnifying_glass_1_"
+               />
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="10dp"
+               android:layout_marginLeft="5dp"
+               android:hint="Search Chat"
+               android:id="@+id/personalChatSearchText" />
+       </LinearLayout>
+       <ListView
+           android:layout_width="match_parent"
+           android:paddingTop="5dp"
+           android:layout_margin="15dp"
+           android:id="@+id/lstUserList"
+           android:layout_height="match_parent"></ListView>
+   </LinearLayout>
+
+</FrameLayout>
