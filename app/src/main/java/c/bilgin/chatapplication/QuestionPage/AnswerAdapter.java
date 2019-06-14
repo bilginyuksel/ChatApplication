@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -56,26 +57,29 @@ public class AnswerAdapter extends ArrayAdapter<Answer> {
             holder = (ViewHolder)convertView.getTag();
         }
 
-        Answer a = answers.get(position);
+        final Answer a = answers.get(position);
 
         if (a!=null){
             holder.txtAnswer.setText(a.getAnswer());
-            holder.txtRate.setText(a.getRate()+" Voter");
+            holder.txtRate.setText(a.getRate()+" Vote");
             holder.txtAnswerer.setText(a.getAnswerer().getName() +" "+a.getAnswerer().getSurname());
             holder.txtQuestion.setText(a.getQuestion());
         }
 
+
         holder.btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Share button");
+                Toast.makeText(mContext, "Sorry share on progress.", Toast.LENGTH_SHORT).show();
             }
         });
 
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Edit Button");
+                AnswerDialog d = new AnswerDialog(mContext,a);
+                d.show();
+                //Toast.makeText(mContext, "Sorry edit on progress.", Toast.LENGTH_SHORT).show();
             }
         });
 

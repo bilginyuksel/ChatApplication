@@ -11,9 +11,13 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import c.bilgin.chatapplication.R;
+import c.bilgin.chatapplication.UsersPersonalChat.Message;
 
 public class GroupChatAdapter extends ArrayAdapter<GroupChat> {
     private List<GroupChat> groupChats;
@@ -47,11 +51,13 @@ public class GroupChatAdapter extends ArrayAdapter<GroupChat> {
     private class ViewHolder {
         ImageButton imgButtonPersonProfile;
         TextView txtPersonFullName;
-        TextView txtChatLastMessage;
+        TextView txtChatLastMessage,txtDate;
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy (HH:mm:ss)");
 
         if(convertView == null){
 
@@ -61,6 +67,7 @@ public class GroupChatAdapter extends ArrayAdapter<GroupChat> {
             viewHolder.imgButtonPersonProfile = (ImageButton) convertView.findViewById(R.id.imgButtonProfilePhoto);
             viewHolder.txtPersonFullName = (TextView)convertView.findViewById(R.id.txtFullName);
             viewHolder.txtChatLastMessage = (TextView)convertView.findViewById(R.id.txtLastMessage);
+            viewHolder.txtDate = (TextView)convertView.findViewById(R.id.txtDate);
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder)convertView.getTag();
@@ -71,9 +78,15 @@ public class GroupChatAdapter extends ArrayAdapter<GroupChat> {
         if(groupChat!= null){
             Picasso.with(mContext).load(groupChat.getGroupImage()).fit().into(viewHolder.imgButtonPersonProfile);
             viewHolder.txtPersonFullName.setText(groupChat.getGroupName());
-            if(groupChat.getMessages()!=null)
-                viewHolder.txtChatLastMessage.setText(groupChat.getMessages().size()!=0?groupChat.getMessages().get(groupChat.getMessages().size()-1).getMessage():"");
-            else viewHolder.txtChatLastMessage.setText("");
+            if(groupChat.getMessage()!=null){
+                viewHolder.txtChatLastMessage.setText(groupChat.getLastMessage()==null?"":groupChat.getLastMessage().getMessage());
+                viewHolder.txtDate.setText(groupChat.getLastMessage()==null?"":format.format(groupChat.getLastMessage().getMessage_date()));
+            }else {
+                viewHolder.txtChatLastMessage.setText("");
+                viewHolder.txtDate.setText("");
+            }
+
+
         }
 
         convertView.setOnClickListener(new View.OnClickListener() {

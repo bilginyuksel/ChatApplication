@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#DCDCDC">
+    android:background ="#f1f1f1"
+    android:layout_height="match_parent">
+
+
 
    <LinearLayout
        android:layout_width="match_parent"
@@ -19,15 +21,18 @@
           android:fontFamily="sans-serif-medium"
           android:layout_marginTop="10dp"
           android:layout_marginBottom="15dp"
-          android:text="News"/>
+          android:text="General News"/>
+
+
       <ListView
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_marginRight="20dp"
+          android:layout_marginTop="5dp"
           android:layout_marginLeft="20dp"
-          android:divider="@android:color/transparent"
-          android:dividerHeight="10dp"
-          android:layout_marginBottom="20dp"
-          android:id="@+id/lstNews"></ListView>
+          android:layout_marginBottom="10dp"
+          android:id="@+id/lstNews">
+
+      </ListView>
    </LinearLayout>
 </FrameLayout>

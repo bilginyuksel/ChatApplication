@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/news_linear_layout"
-    android:layout_margin="20dp"
+    android:background="#DCDCDC"
     android:id="@+id/linLay"
-    android:padding="10dp"
-    android:orientation="horizontal">
+    android:layout_gravity="right"
+    android:gravity="right"
+    android:orientation="vertical"
+   >
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Guest >>"
-        android:textColor="#191970"
-        android:fontFamily="monospace"
-        android:textSize="17dp"
-        android:id="@+id/txtSender"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="monospace"
-        android:layout_marginLeft="10dp"
-        android:textColor="#191970"
-        android:textSize="17dp"
-        android:text="Message"
-        android:id="@+id/txtMessage"
-        />
+        android:layout_margin="5dp"
+        android:paddingLeft="25dp"
+        android:paddingTop="5dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="15dp"
+        android:backgroundTint="#5fc9f8"
+        android:orientation="vertical"
+        android:background="@drawable/news_linear_layout"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textColor="#000"
+            android:textSize="16dp"
+            android:text="Message"
+            android:id="@+id/txtMessage"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtMessage_time"
+            android:textSize="11dp"
+            android:text="TimeStamp">
+        </TextView>
+
+    </LinearLayout>
 
 </LinearLayout>

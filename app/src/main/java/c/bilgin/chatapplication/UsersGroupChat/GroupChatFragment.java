@@ -14,20 +14,13 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.List;
 
-import c.bilgin.chatapplication.ChatAdapter;
-import c.bilgin.chatapplication.ChatPage;
+import c.bilgin.chatapplication.ChatOperations.ChatPage;
 import c.bilgin.chatapplication.Firebase;
 import c.bilgin.chatapplication.HomePage;
 import c.bilgin.chatapplication.R;
-import c.bilgin.chatapplication.UserOP.User;
-import c.bilgin.chatapplication.UserOP.UserList;
-import c.bilgin.chatapplication.UsersPersonalChat.Message;
-
-import static c.bilgin.chatapplication.UsersPersonalChat.PersonalChatFragment.arrPersonalChats;
 
 public class GroupChatFragment extends Fragment {
 

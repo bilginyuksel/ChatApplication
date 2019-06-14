@@ -1,27 +1,44 @@
 package c.bilgin.chatapplication.UsersPersonalChat;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import c.bilgin.chatapplication.UserOP.User;
 
 public class PersonalChat {
     private String uuid,hostUID,guestUID;
-    private ArrayList<Message> messages;
+    private Message lastMessage;
+    private HashMap<String,Message> message;
     private User receiver,sender;
     //PersonalChat object should create a new personal chat beetween to users so sender receiver goes to message...
 
     public PersonalChat(String hostUID,String guestUID,User user1,User user2){
 
-        messages = new ArrayList<>();
         //find users according to their uuid or something from email name...
         this.hostUID = hostUID;
+        lastMessage = new Message();
         this.guestUID = guestUID;
         this.uuid = hostUID+guestUID;
+        message = new HashMap<>();
         this.receiver = user1;
         this.sender = user2;
     }public PersonalChat(){}
-    public void sendMessage(Message m){
-        this.messages.add(m);
+
+    public HashMap<String, Message> getMessage() {
+        return message;
+    }
+
+    public void setLastMessage(Message lastMessage) {
+        this.lastMessage = lastMessage;
+    }
+
+    public Message getLastMessage() {
+        return lastMessage;
+    }
+
+    public void setMessage(HashMap<String, Message> message) {
+        this.message = message;
     }
 
     public void setReceiver(User receiver) {
@@ -40,13 +57,7 @@ public class PersonalChat {
         return sender;
     }
 
-    public PersonalChat createPersonalChat(String message){
-        Message m = new Message(message,sender);
-        PersonalChat pc = new PersonalChat(hostUID,guestUID,receiver,sender);
-        pc.sendMessage(m);
 
-        return pc;
-    }
 
     /*
     * send message and receive message properties
@@ -69,10 +80,6 @@ public class PersonalChat {
     }
 
 
-    public void setMessages(ArrayList<Message> messages) {
-        this.messages = messages;
-    }
-
     public void setUID(String uuid) {
         this.uuid = uuid;
     }
@@ -82,7 +89,4 @@ public class PersonalChat {
     }
 
 
-    public ArrayList<Message> getMessages() {
-        return messages;
-    }
 }

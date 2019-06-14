@@ -1,6 +1,7 @@
 package c.bilgin.chatapplication.QuestionPage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,18 +11,22 @@ public class Question {
 
     private String uid,question;
     private ArrayList<String> interest;
-    private List<Answer> answers ;
+    private HashMap<String,Answer> ans;
     private User asker;
     private int rate;
     public Question(String question,ArrayList<String> interest,User asker){
         this.uid = UUID.randomUUID().toString();
         this.question = question;
-        this.answers = new ArrayList<>();
         this.interest = interest;
+        this.ans = new HashMap<>();
         this.asker = asker;
         this.rate = 0;
 
     }public Question(){}
+
+    public HashMap<String, Answer> getAns() {
+        return ans;
+    }
 
     public User getAsker() {
         return asker;
@@ -31,8 +36,8 @@ public class Question {
         return uid;
     }
 
-    public List<Answer> getAnswers() {
-        return answers;
+    public void setAns(HashMap<String, Answer> ans) {
+        this.ans = ans;
     }
 
     public String getQuestion() {
@@ -49,8 +54,13 @@ public class Question {
     public void giveAVote(){
         this.rate = rate +1;
     }
-    public void addAnswer(Answer a){
-        if(answers==null) answers= new ArrayList<>();
-        this.answers.add(a);
+    public void addAns(Answer a){
+        if(ans==null)ans=new HashMap<>();
+        this.ans.put(a.getUid(),a);
     }
+    public void editAns(Answer a){
+        ans.remove(a.getUid());
+        ans.put(a.getUid(),a);
+    }
+
 }

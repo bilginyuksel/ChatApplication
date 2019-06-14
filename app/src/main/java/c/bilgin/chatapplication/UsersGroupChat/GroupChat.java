@@ -1,6 +1,6 @@
 package c.bilgin.chatapplication.UsersGroupChat;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,15 +12,17 @@ public class GroupChat {
     private List<User> members;
     private String uid,groupName,groupImage;
     private User groupLeader;
-    private List<Message> messages;
+    private HashMap<String,Message> message;
+    private Message lastMessage;
 
     public GroupChat(String groupName,String groupImage,User groupLeader,List<User> members){
         uid = UUID.randomUUID().toString();
         this.members = members;
+        lastMessage = new Message();
         this.groupImage = groupImage;
+        message = new HashMap<>();
         this.groupName = groupName;
         this.groupLeader = groupLeader;
-        messages = new ArrayList<>();
     }public GroupChat(){}
 
     public void setGroupLeader(User groupLeader) {
@@ -35,6 +37,14 @@ public class GroupChat {
         return groupImage;
     }
 
+    public void setLastMessage(Message lastMessage) {
+        this.lastMessage = lastMessage;
+    }
+
+    public Message getLastMessage() {
+        return lastMessage;
+    }
+
     public void setGroupImage(String groupImage) {
         this.groupImage = groupImage;
     }
@@ -47,25 +57,22 @@ public class GroupChat {
         return groupName;
     }
 
-    public void sendMessage(Message m){
-        this.messages.add(m);
-    }
-
     public void setMembers(List<User> members) {
         this.members = members;
     }
 
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
+    public HashMap<String, Message> getMessage() {
+        return message;
+    }
+
+    public void setMessage(HashMap<String, Message> message) {
+        this.message = message;
     }
 
     public void setUid(String uid) {
         this.uid = uid;
     }
 
-    public List<Message> getMessages() {
-        return messages;
-    }
 
     public List<User> getMembers() {
         return members;

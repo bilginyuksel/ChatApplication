@@ -2,6 +2,7 @@ package c.bilgin.chatapplication;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,21 +10,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.RemoteMessage;
 import com.squareup.picasso.Picasso;
+
+import c.bilgin.chatapplication.CreatorOperations.CreatorPage;
 
 public class ProfileFragment extends Fragment {
 
     private Context mContext;
 
+    public static int answer=0;
     private static ProfileFragment instance = new ProfileFragment();
     @SuppressLint("ValidFragment")
     private ProfileFragment(){
@@ -52,31 +52,32 @@ public class ProfileFragment extends Fragment {
         LinearLayout linearLayout = (LinearLayout)inflater.inflate(R.layout.profile_fragment,container,false);
         ImageView imgView = (ImageView)linearLayout.findViewById(R.id.imgProfilePhoto);
         TextView txtName = (TextView)linearLayout.findViewById(R.id.txtUserName);
-        TextView txtGroups = (TextView)linearLayout.findViewById(R.id.txtGroups);
         TextView txtEmail = (TextView)linearLayout.findViewById(R.id.txtEmail);
-        final EditText etMessage = (EditText)linearLayout.findViewById(R.id.etFCMMessage);
-        Button btnSend = (Button)linearLayout.findViewById(R.id.btnSend);
+        TextView txtAnsweredQuestion = (TextView)linearLayout.findViewById(R.id.txtAnsweredQuestion);
 
-        btnSend.setOnClickListener(new View.OnClickListener() {
+        imgView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Clicked");
-                /*
-                * FirebaseMessaging fm = FirebaseMessaging.getInstance();
-                fm.send(new RemoteMessage.Builder(HomePage.currentUser.getUID() + "@fcm.googleapis.com")
-                        .setMessageId(Integer.toString(3))
-                        .addData("my_message", etMessage.getText().toString())
-                        .addData("my_action","SAY_HELLO")
-                        .build());*/
+                if(HomePage.currentUser.getAuthority().equals("Creator")){
+                    //Start activity
+                    //For adding news, adding users, controlling user activities maybe
+                    //deleting something from the app...
+                    startActivity(new Intent(mContext, CreatorPage.class));
+                    HomePage.fragmentTransaction = HomePage.fragmentManager.beginTransaction();
+                    HomePage.fragmentTransaction.remove(ProfileFragment.getInstance()).commit();
+                }else{
+                    Toast.makeText(mContext, "Sorry members can access that area!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
 
        // String groups="";
 
         Picasso.with(mContext).load(HomePage.currentUser.getProfilePhoto()).fit().into(imgView);
         txtName.setText(HomePage.currentUser.getName() + " "+HomePage.currentUser.getSurname());
         txtEmail.setText(HomePage.currentUser.getEmail());
-        txtGroups.setText("I deleted groups from users i have to add it...");
+        txtAnsweredQuestion.setText(answer==0?"No answers yet.":answer+" Answers.");
 
 
 

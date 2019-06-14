@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 import java.util.List;
 
-import c.bilgin.chatapplication.ChatPage;
+import c.bilgin.chatapplication.ChatOperations.ChatPage;
 import c.bilgin.chatapplication.Firebase;
 import c.bilgin.chatapplication.HomePage;
 import c.bilgin.chatapplication.R;
@@ -76,13 +78,30 @@ public class PersonalChatFragment extends Fragment {
 
 
         ImageButton personalChatPlusButton = (ImageButton)frameLayout.findViewById(R.id.personalChatPlusButton);
-        EditText personalChatSearchText =(EditText)frameLayout.findViewById(R.id.personalChatSearchText);
+        final EditText personalChatSearchText =(EditText)frameLayout.findViewById(R.id.personalChatSearchText);
         final ListView personalChatListView = (ListView)frameLayout.findViewById(R.id.personalChatList);
         personalChatAdapter = new PersonalChatAdapter(mContext,arrPersonalChats);
         personalChatListView.setAdapter(personalChatAdapter);
 
 
 
+
+        personalChatSearchText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                personalChatAdapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
 
         //plus button click

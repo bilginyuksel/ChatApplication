@@ -5,12 +5,14 @@ import com.google.firebase.iid.FirebaseInstanceId;
 public class User {
     //User informations
     private String uid,name,surname,email,profilePhoto,message_token;
+    private String authority;
 
 
 
     public User(String uid, String name, String surname, String email, String profilePhoto,String message_token){
         this.uid = uid;
         this.name = name;
+        this.authority = "";
         this.message_token = message_token;
         this.surname = surname;
         this.email = email;
@@ -19,6 +21,14 @@ public class User {
 
     public String getUID() {
         return uid;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
+
+    public String getAuthority() {
+        return authority;
     }
 
     public String getMessage_token() {

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ListView;
@@ -31,10 +32,11 @@ public class QuestionChildFragment extends Fragment {
     protected static QuestionAdapter adapter;
     protected static List<Question> arrQuestion = new ArrayList<>();
     private Button addQ;
+    private String name="Questions";
     private Context mContext;
     private static QuestionChildFragment instance = new QuestionChildFragment();
     @SuppressLint("ValidFragment")
-    private QuestionChildFragment(){new FirebaseQuestion().getData(arrQuestion);}
+    private QuestionChildFragment(){ new FirebaseQuestion().getData(arrQuestion);}
     public static QuestionChildFragment getInstance(){return instance;}
 
 
@@ -48,6 +50,10 @@ public class QuestionChildFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context); this.mContext = context;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Nullable
@@ -66,6 +72,19 @@ public class QuestionChildFragment extends Fragment {
                 Dialog d = new AskQuestionDialog(mContext);
                 d.show();
 
+            }
+        });
+
+
+        adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+              if(arrQuestion.get(position).getAns()!=null){
+                  DialogShowAnswers d =new DialogShowAnswers(mContext,arrQuestion.get(position));
+                  d.show();
+              }else{
+                  Toast.makeText(mContext, "Sorry no answers for that question.", Toast.LENGTH_SHORT).show();
+              }
             }
         });
 

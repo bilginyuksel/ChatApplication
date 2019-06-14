@@ -22,8 +22,16 @@ public class Answer {
         this.question_uid = question_uid;
     }public Answer(){}
 
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
     public String getUid() {
         return uid;
+    }
+
+    public void updateRate(){
+        this.rate = this.rate+1;
     }
 
     public int getRate() {

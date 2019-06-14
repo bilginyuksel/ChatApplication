@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 
 import c.bilgin.chatapplication.NewsHomePage.HomeFragment;
+import c.bilgin.chatapplication.NewsHomePage.NewsFragment;
 import c.bilgin.chatapplication.UserOP.User;
 import c.bilgin.chatapplication.UsersGroupChat.GroupChatFragment;
 import c.bilgin.chatapplication.UsersPersonalChat.PersonalChatFragment;
@@ -37,7 +38,7 @@ public class HomePage extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.layout,HomeFragment.getInstance());
+                    fragmentTransaction.replace(R.id.layout, NewsFragment.getInstance());
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_question:
@@ -80,7 +81,7 @@ public class HomePage extends AppCompatActivity {
         fragmentManager = this.getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fragmentTransaction.add(R.id.layout,HomeFragment.getInstance());
+        fragmentTransaction.add(R.id.layout,NewsFragment.getInstance());
         fragmentTransaction.commit();
 
 

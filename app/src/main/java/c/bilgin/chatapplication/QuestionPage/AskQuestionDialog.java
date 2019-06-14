@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
@@ -28,6 +29,7 @@ public class AskQuestionDialog extends Dialog {
 
     private TextView txtInterest;
     private Button addInterest,addQuestion;
+    private ImageButton btnDismiss;
     private EditText etQuestion;
     private Spinner spnInterest;
     private Context mContext;
@@ -54,6 +56,8 @@ public class AskQuestionDialog extends Dialog {
         addQuestion = (Button)findViewById(R.id.btnAddQuestion);
         etQuestion = (EditText)findViewById(R.id.etQuestion);
         spnInterest = (Spinner)findViewById(R.id.spnInterest);
+        btnDismiss = (ImageButton)findViewById(R.id.btnDismiss);
+
 
         List<String> spinnerArray =  new ArrayList<String>();
         spinnerArray.add("Artificial Intelligence");
@@ -86,10 +90,18 @@ public class AskQuestionDialog extends Dialog {
             public void onClick(View v) {
                 Question q = new Question(etQuestion.getText().toString(),i, HomePage.currentUser);
                 new FirebaseQuestion().addData(q,q.getUid());
+                new FirebaseFollow().addData(q,q.getUid());
 
                 Toast.makeText(mContext, "Question added successfully.", Toast.LENGTH_SHORT).show();
                 dismiss();
 
+            }
+        });
+
+        btnDismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
             }
         });
     }

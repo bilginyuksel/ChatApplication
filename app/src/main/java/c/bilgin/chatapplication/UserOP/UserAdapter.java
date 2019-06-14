@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,8 +22,18 @@ public class UserAdapter extends ArrayAdapter<User> {
     private Context mContext;
     private LayoutInflater inflater;
     private ViewHolder viewHolder;
+    private AdapterView.OnItemClickListener onItemClickListener;
 
-    public UserAdapter(Context context,List<User> users) {
+
+    public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public AdapterView.OnItemClickListener getOnItemClickListener() {
+        return onItemClickListener;
+    }
+
+    public UserAdapter(Context context, List<User> users) {
         super(context, 0,users);
         this.mContext = context;
         this.users = users;
@@ -47,7 +58,7 @@ public class UserAdapter extends ArrayAdapter<User> {
 
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
             convertView = inflater.inflate(R.layout.card_user_list,null);
@@ -68,6 +79,13 @@ public class UserAdapter extends ArrayAdapter<User> {
             viewHolder.txtUserFullName.setText(user.getName()+" "+user.getSurname());
 
         }
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(onItemClickListener!=null) onItemClickListener.onItemClick(null,v,position,-1);
+            }
+        });
 
         return convertView;
     }

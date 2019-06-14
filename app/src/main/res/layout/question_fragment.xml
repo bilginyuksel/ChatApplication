@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#DCDCDC"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
   <RelativeLayout
@@ -19,20 +18,23 @@
               app:layout_behavior="@string/appbar_scrolling_view_behavior"
               app:tabTextAppearance="?android:attr/textAppearanceMedium"
               app:tabTextColor="#ffffff"
+              android:background="#191970"
               android:layout_height="?android:actionBarSize"
               app:tabMode="fixed"
               app:tabGravity="fill"/>
 
       </android.support.design.widget.AppBarLayout>
-      <LinearLayout
+
+      <android.support.v4.view.ViewPager
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:layout_marginTop="60dp"
-          android:orientation="vertical"
-          android:layout_alignEnd="@id/appBar"
-          android:id="@+id/layout">
+          android:layout_marginTop="55dp"
+          android:id="@+id/view_pager"/>
 
-      </LinearLayout>
+
+
+
+
   </RelativeLayout>
 
 </FrameLayout>

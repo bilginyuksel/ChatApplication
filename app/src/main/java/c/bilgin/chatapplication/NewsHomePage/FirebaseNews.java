@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -29,10 +28,7 @@ public class FirebaseNews extends Firebase {
                     HomeFragment.adapter.notifyDataSetChanged();
                 }
 
-                /*
-                * synchronized (someArr){
-                    HomeFragment.getInstance().fillItem();
-                }*/
+
             }
 
             @Override
@@ -50,5 +46,88 @@ public class FirebaseNews extends Firebase {
     @Override
     public void updateData() {
 
+    }
+
+    public void getAIData(final List someArr){
+        getDatabaseReference().orderByChild("group").equalTo("Artificial Intelligence").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot sp :dataSnapshot.getChildren()){
+                    someArr.add(sp.getValue(getaClass()));
+                }
+
+                synchronized (someArr){
+                  AIFragment.adapter.notifyDataSetChanged();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void getCSData(final List someArr){
+        getDatabaseReference().orderByChild("group").equalTo("Cyber Security").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot sp :dataSnapshot.getChildren()){
+                    someArr.add(sp.getValue(getaClass()));
+                }
+
+                synchronized (someArr){
+                    if(CSFragment.CSadapter!=null)CSFragment.CSadapter.notifyDataSetChanged();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public void getVRData(final List someArr){
+        getDatabaseReference().orderByChild("group").equalTo("Virtual Reality").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot sp :dataSnapshot.getChildren()){
+                    someArr.add(sp.getValue(getaClass()));
+                }
+
+                synchronized (someArr){
+                    if(VRFragment.adapter!=null)
+                        VRFragment.adapter.notifyDataSetChanged();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public void getSDData(final List someArr){
+        getDatabaseReference().orderByChild("group").equalTo("Software Development").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot sp :dataSnapshot.getChildren()){
+                    someArr.add(sp.getValue(getaClass()));
+                }
+
+                synchronized (someArr){
+                    if(SDFragment.adapter!=null)SDFragment.adapter.notifyDataSetChanged();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

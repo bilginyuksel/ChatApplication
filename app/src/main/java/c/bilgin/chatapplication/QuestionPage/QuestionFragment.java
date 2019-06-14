@@ -9,6 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,12 +38,7 @@ public class QuestionFragment extends Fragment {
         super.onCreate(savedInstanceState);
         getActivity().setTitle("Questions");
 
-        fragmentManager = this.getChildFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
-        fragmentTransaction.add(R.id.layout,QuestionChildFragment.getInstance());
-        fragmentTransaction.commit();
     }
 
     @Override
@@ -56,50 +52,11 @@ public class QuestionFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FrameLayout frameLayout = (FrameLayout)inflater.inflate(R.layout.question_fragment,container,false);
+        ViewPager viewPager = (ViewPager)frameLayout.findViewById(R.id.view_pager);
+        viewPager.setAdapter(new ViewPagerAdapter(getChildFragmentManager()));
 
         TabLayout tabLayout = frameLayout.findViewById(R.id.tabs);
-        //Create tabs here
-        tabLayout.addTab(tabLayout.newTab().setText("Questions"));
-        tabLayout.addTab(tabLayout.newTab().setText("Answers"));
-        tabLayout.addTab(tabLayout.newTab().setText("Follow"));
-
-        /*
-        * child fragments select listener // if you need fill unselected and reselected*/
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getText().toString()){
-                    case QUESTION:
-                        fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.layout,QuestionChildFragment.getInstance());
-                        fragmentTransaction.commit();
-                        break;
-                    case ANSWER:
-                        fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.layout,QuestionChildFragmentAnswers.getInstance());
-                        fragmentTransaction.commit();
-                        break;
-                    case NOTIFICATION:
-                        fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.layout, QuestionChildFragmentFollow.getInstance());
-                        fragmentTransaction.commit();
-                        break;
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });//opens fragment according to tab
-
-
-
+        tabLayout.setupWithViewPager(viewPager);
 
 
         return frameLayout;

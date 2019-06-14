@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:padding="10dp"
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="15dp"
     android:layout_height="wrap_content">
 
 
@@ -40,13 +43,23 @@
             android:textStyle="bold"
             android:id="@+id/txtFullName"
             android:text="Name Surname"/>
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:paddingTop="10dp"
-            android:id="@+id/txtLastMessage"
-            android:textSize="13dp"
-            android:layout_height="wrap_content"
-            android:text="Last Message"/>
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/txtLastMessage"
+                android:textSize="13dp"
+                android:layout_height="wrap_content"
+                android:text="Last Message"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDate"
+                android:text="DateTime"/>
+        </LinearLayout>
 
     </LinearLayout>
 

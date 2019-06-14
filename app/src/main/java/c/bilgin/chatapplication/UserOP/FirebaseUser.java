@@ -77,7 +77,7 @@ public class FirebaseUser extends Firebase {
             }
         });
     }
-    private User u;
+
 
 
 

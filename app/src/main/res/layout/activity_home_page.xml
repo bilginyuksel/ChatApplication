@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="55dp"
         app:layout_constraintBottom_toTopOf="@+id/navigation">
 
     </LinearLayout>

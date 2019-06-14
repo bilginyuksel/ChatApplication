@@ -15,6 +15,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_marginRight="10dp"
+           android:textSize="13dp"
            android:text="Question added "/>
 
        <View
@@ -28,6 +29,7 @@
            android:id="@+id/txtInterest"
            android:layout_height="wrap_content"
            android:textStyle="italic"
+           android:textSize="13dp"
            android:text="Artificial Intelligence, Python"/>
    </LinearLayout>
 
@@ -36,7 +38,7 @@
         android:layout_height="wrap_content"
         android:text="Question"
         android:layout_marginTop="5dp"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:id="@+id/txtQuestion"
         android:fontFamily="sans-serif-medium"
         android:textColor="#000"/>
@@ -52,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtAnswerCount"
+            android:textSize="14dp"
             android:layout_marginRight="10dp"
             android:text="3 Answers "/>
 
@@ -64,6 +67,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:id="@+id/txtUserAsks"
+            android:textSize="14dp"
             android:layout_height="wrap_content"
             android:text="User which asks"/>
     </LinearLayout>
@@ -78,28 +82,42 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:id="@+id/imgButtonAnswer"
-            android:background="@drawable/quiz"/>
+            android:background="@drawable/pen_on_square_of_paper_interface_symbol"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
+            android:textSize="14dp"
             android:layout_marginLeft="3dp"
-            android:textColor="#C0C0"
+            android:textColor="#000"
             android:text="Answer"/>
 
         <ImageButton
             android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_height="22dp"
             android:id="@+id/imgButtonVote"
             android:layout_marginLeft="25dp"
-            android:background="@drawable/star"/>
+            android:background="@drawable/iconfinder_thumb_up_326712"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:textColor="#C0C0"
+            android:textSize="14dp"
+            android:textColor="#000"
             android:layout_marginLeft="3dp"
             android:text="Vote"/>
+
+        <ImageButton
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:id="@+id/imgButtonFollowo"
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/iconfinder_rss_1608819"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#000"
+            android:layout_marginLeft="3dp"
+            android:text="Follow"/>
 
 
     </LinearLayout>

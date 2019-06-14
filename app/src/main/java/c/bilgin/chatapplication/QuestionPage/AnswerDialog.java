@@ -16,8 +16,12 @@ public class AnswerDialog extends Dialog {
 
     private Context mContext;
     private Question q;
+    private Answer a;
     public AnswerDialog(Context context,Question q) {
         super(context); this.q = q; this.mContext = context;
+    }
+    public AnswerDialog(Context context,Answer a ){
+        super(context); this.mContext = context; this.a = a; this.q = q;
     }
 
     @Override
@@ -35,8 +39,20 @@ public class AnswerDialog extends Dialog {
         TextView txtQuestion = (TextView)findViewById(R.id.txtQuestion);
         final EditText etAnswer = (EditText)findViewById(R.id.etAnswer);
 
-        txtQuestion.setText(q.getQuestion());
 
+
+
+        if(a!=null){
+            etAnswer.setText(a.getAnswer());
+            for(Question qu:QuestionChildFragment.arrQuestion){
+                if(qu.getUid().equals(a.getQuestion_uid())){
+                    q = qu;
+                    break;
+                }
+            }
+        }
+
+        txtQuestion.setText(q.getQuestion());
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,10 +63,19 @@ public class AnswerDialog extends Dialog {
         txtSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Answer a = new Answer(etAnswer.getText().toString(),q.getUid(),q.getQuestion());
-                q.addAnswer(a);
-                new FirebaseQuestion().addAnswer(q);
-                new FirebaseAnswer().addData(a,a.getUid());
+               if(a==null){
+                   Answer a1 = new Answer(etAnswer.getText().toString(),q.getUid(),q.getQuestion());
+                   q.addAns(a1);
+                   new FirebaseQuestion().addAnswer(q);
+                   new FirebaseAnswer().addData(a1,a1.getUid());
+                   if(isFollowed(q)) new FirebaseFollow().addAnswer(q);
+               }else{
+                   a.setAnswer(etAnswer.getText().toString());
+                   q.editAns(a);
+                   new FirebaseQuestion().addAnswer(q);
+                   new FirebaseAnswer().addData(a,a.getUid());
+                   if(isFollowed(q)) new FirebaseFollow().addAnswer(q);
+               }
                 Toast.makeText(mContext, "Answer uploaded successfully.", Toast.LENGTH_LONG).show();
                 dismiss();
             }
@@ -59,5 +84,12 @@ public class AnswerDialog extends Dialog {
 
 
 
+    }
+
+    private boolean isFollowed(Question q1){
+        for(Question q2 : QuestionChildFragmentFollow.arrQuestion){
+            if(q2.getUid().equals(q1.getUid())) return true;
+        }
+        return false;
     }
 }

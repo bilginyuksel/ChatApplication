@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:textSize="16dp"
+            android:textSize="14dp"
             android:id="@+id/txtQuestion"
             android:textColor="#000"
             android:text="Question "/>
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Answer"
         android:layout_marginTop="5dp"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:id="@+id/txtAnswer"
         android:fontFamily="sans-serif-medium"
         android:textColor="#000"/>
@@ -70,13 +70,13 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:id="@+id/imgButtonEdit"
-            android:background="@drawable/quiz"/>
+            android:background="@drawable/pen_on_square_of_paper_interface_symbol"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
+            android:textSize="14dp"
             android:layout_marginLeft="3dp"
-            android:textColor="#C0C0"
+            android:textColor="#000"
             android:text="Edit"/>
 
         <ImageButton
@@ -84,14 +84,15 @@
             android:layout_height="24dp"
             android:id="@+id/imgButtonShare"
             android:layout_marginLeft="25dp"
-            android:background="@drawable/star"/>
+            android:background="@drawable/iconfinder_share_353438"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:textColor="#C0C0"
+            android:textSize="14dp"
+            android:textColor="#000"
             android:layout_marginLeft="3dp"
             android:text="Share"/>
+
 
 
     </LinearLayout>

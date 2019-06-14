@@ -9,8 +9,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,25 +22,18 @@ import c.bilgin.chatapplication.R;
 
 public class QuestionChildFragmentFollow extends Fragment {
 
+    protected static List<Question> arrQuestion = new ArrayList<>();
     private static QuestionChildFragmentFollow instance = new QuestionChildFragmentFollow();
     @SuppressLint("ValidFragment")
-    private QuestionChildFragmentFollow(){ for(Question q:QuestionChildFragment.arrQuestion){
-        if(q.getAsker().getUID().equals(HomePage.currentUser.getUID()))arrQuestion.add(q);
-    }}
+    private QuestionChildFragmentFollow(){
+        new FirebaseFollow().getData(arrQuestion);
+    }
     public static QuestionChildFragmentFollow getInstance(){return instance;}
 
-
-    /*
-    *
-    * main goal of this section : follow some questions you are interested and follow your questions
-    * */
-
-
     private Context mContext;
-    private List<Question> arrQuestion = new ArrayList<>();
-    private QuestionAdapter adapter;
-    private ListView lstQuestions;
 
+    protected static QuestionAdapter adapter;
+    private ListView lstQuestions;
 
 
     @Override
@@ -58,11 +53,22 @@ public class QuestionChildFragmentFollow extends Fragment {
         FrameLayout frameLayout = (FrameLayout)inflater.inflate(R.layout.question_child_notifications_fragment,container,false);
 
 
-
-
         lstQuestions = (ListView)frameLayout.findViewById(R.id.lstQuestion);
         adapter = new QuestionAdapter(mContext,arrQuestion);
         lstQuestions.setAdapter(adapter);
+
+
+        adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(arrQuestion.get(position).getAns()!=null){
+                    DialogShowAnswers d = new DialogShowAnswers(mContext,arrQuestion.get(position));
+                    d.show();
+                }else{
+                    Toast.makeText(mContext, "Sorry no answers for that question.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
         return frameLayout;

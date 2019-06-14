@@ -1,0 +1,9 @@
+we are adding arrays to database with a logic based arrays index,
+but this causes problems. push() method exist for that it inits a uid for list,
+but i think it should be HashMap<String,Message> kind of... List gives error.
+
+
+Last stayed place : GroupChat
+Active Problem : Not updating list when message received and so hard optimization problem
+Because getting all messages sorting all messages bla bla. It should be list or something else
+

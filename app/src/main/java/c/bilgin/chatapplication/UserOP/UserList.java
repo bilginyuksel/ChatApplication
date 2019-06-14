@@ -7,17 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import c.bilgin.chatapplication.ChatPage;
+import c.bilgin.chatapplication.ChatOperations.ChatPage;
 import c.bilgin.chatapplication.HomePage;
 import c.bilgin.chatapplication.R;
-import c.bilgin.chatapplication.UsersGroupChat.FirebaseGroupChat;
-import c.bilgin.chatapplication.UsersGroupChat.GroupChat;
 import c.bilgin.chatapplication.UsersPersonalChat.FirebasePersonalChat;
 import c.bilgin.chatapplication.UsersPersonalChat.PersonalChat;
 import c.bilgin.chatapplication.UsersPersonalChat.PersonalChatFragment;
@@ -31,6 +30,7 @@ public class UserList extends Dialog {
     protected static UserAdapter userAdapter;
     private PersonalChat pcVer1;
     private PersonalChat pcVer2;
+    private ImageButton btnDismiss;
 
     public UserList(Context context) {
         super(context);
@@ -48,11 +48,18 @@ public class UserList extends Dialog {
         lp.height = WindowManager.LayoutParams.MATCH_PARENT;
         getWindow().setAttributes(lp);
         lstUser = (ListView)findViewById(R.id.lstUserList);
+        btnDismiss = (ImageButton)findViewById(R.id.btnDismiss);
         userAdapter = new UserAdapter(mContext,arrUsers);
         lstUser.setAdapter(userAdapter);
 
 
-        lstUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        btnDismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+        userAdapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FirebasePersonalChat p = new FirebasePersonalChat();
