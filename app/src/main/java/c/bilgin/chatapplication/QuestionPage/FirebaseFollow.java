@@ -28,12 +28,12 @@ public class FirebaseFollow extends Firebase {
 
                 for(DataSnapshot sp: dataSnapshot.getChildren()){
                     q =(Question)sp.getValue(getaClass());
-                    DataSnapshot sp1 = sp.child("ans");
+                    DataSnapshot sp1 = sp.child("answers");
                     HashMap<String,Answer> ans = new HashMap<>();
                     for(DataSnapshot s : sp1.getChildren()){
                         ans.put(s.getKey(),s.getValue(Answer.class));
                     }
-                    q.setAns(ans);
+                    q.setAnswers(ans);
                     someArr.add(q);
                 }
 
@@ -60,6 +60,10 @@ public class FirebaseFollow extends Firebase {
 
     }
     public void addAnswer(Question q){
-        getDatabaseReference().child(HomePage.currentUser.getUID()).child(q.getUid()).child("ans").setValue(q.getAns());
+        //child is not HomePage.currentUser.getUID() because
+        //you have to update follow field.
+
+        //this is bullshit.
+        getDatabaseReference().child(q.getAsker().getUID()).child(q.getUid()).child("answers").setValue(q.getAnswers());
     }
 }

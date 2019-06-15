@@ -81,7 +81,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
                 holder.txtInterests.setText(interest);
                 holder.txtUser.setText(q.getAsker().getName() +" "+q.getAsker().getSurname());
-                holder.txtAnsCount.setText(q.getAns()!=null?q.getAns().size() +" Answers":"No answer yet.");
+                holder.txtAnsCount.setText(q.getAnswers()!=null?q.getAnswers().size() +" Answers":"No answer yet.");
             }
 
 
@@ -133,7 +133,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     }
 
     private boolean isAnswered(Question q){
-        for(Answer a:q.getAns().values()){
+        for(Answer a:q.getAnswers().values()){
             if(a.getAnswerer().getUID().equals(HomePage.currentUser.getUID())){
                 return false;
             }

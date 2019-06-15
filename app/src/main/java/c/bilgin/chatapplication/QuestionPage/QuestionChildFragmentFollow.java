@@ -17,7 +17,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import c.bilgin.chatapplication.HomePage;
 import c.bilgin.chatapplication.R;
 
 public class QuestionChildFragmentFollow extends Fragment {
@@ -61,7 +60,7 @@ public class QuestionChildFragmentFollow extends Fragment {
         adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(arrQuestion.get(position).getAns()!=null){
+                if(arrQuestion.get(position).getAnswers()!=null){
                     DialogShowAnswers d = new DialogShowAnswers(mContext,arrQuestion.get(position));
                     d.show();
                 }else{

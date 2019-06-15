@@ -74,7 +74,15 @@ public class AnswerDialog extends Dialog {
                    q.editAns(a);
                    new FirebaseQuestion().addAnswer(q);
                    new FirebaseAnswer().addData(a,a.getUid());
-                   if(isFollowed(q)) new FirebaseFollow().addAnswer(q);
+                   if(isFollowed(q)) {
+                       new FirebaseFollow().addAnswer(q);
+                   }else{
+                       //maybe you cant follow this question but someone follows this question.
+                       //you have to solve that problem. If someone answers your question your question not updated.
+                       //if you update your question then it will ok.
+
+                       //--- the real problem is answer and ans situation.
+                   }
                }
                 Toast.makeText(mContext, "Answer uploaded successfully.", Toast.LENGTH_LONG).show();
                 dismiss();

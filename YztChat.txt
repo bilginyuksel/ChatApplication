@@ -1,9 +1,4 @@
-we are adding arrays to database with a logic based arrays index,
-but this causes problems. push() method exist for that it inits a uid for list,
-but i think it should be HashMap<String,Message> kind of... List gives error.
-
-
-Last stayed place : GroupChat
-Active Problem : Not updating list when message received and so hard optimization problem
-Because getting all messages sorting all messages bla bla. It should be list or something else
-
+Build pushnotification trigger with functions to any device
+Develop god mode.. just for adding news and checking registered users and their informations.
+Edit profile page maybe than it is going to over. if chat notifications okay and you got the way how
+you can implement it then do it for followed questions!

@@ -118,6 +118,7 @@ public class FirebasePersonalChat extends Firebase {
         editedMessage.put("message",m.getMessage());
         editedMessage.put("sender_id",m.getSender().getUID());
         editedMessage.put("receiver_id",p.getReceiver().getUID());
+        editedMessage.put("receiver_token",p.getReceiver().getMessage_token());
         editedMessage.put("name",m.getSender().getName());
         FirebaseDatabase.getInstance().getReference("messages").child(UUID.randomUUID().toString()).setValue(editedMessage);
     }

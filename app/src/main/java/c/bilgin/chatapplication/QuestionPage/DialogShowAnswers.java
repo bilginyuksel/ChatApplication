@@ -56,8 +56,8 @@ public class DialogShowAnswers extends Dialog {
             interest+="#"+s+" ";
         txtInterest.setText(interest);
         txtQuestion.setText(currentQuestion.getQuestion());
-        txtHowManyAnswers.setText(currentQuestion.getAns()!=null?currentQuestion.getAns().size() +" Answers":"No answers yet.");
-        List<Answer> ans = new ArrayList<>(currentQuestion.getAns().values());
+        txtHowManyAnswers.setText(currentQuestion.getAnswers()!=null?currentQuestion.getAnswers().size() +" Answers":"No answers yet.");
+        List<Answer> ans = new ArrayList<>(currentQuestion.getAnswers().values());
         adapter = new CustomAnswerAdapter(mContext,ans,currentQuestion);
         lstAnswer.setAdapter(adapter);
 
@@ -93,7 +93,7 @@ public class DialogShowAnswers extends Dialog {
     }
 
     private boolean isAnswered(Question q){
-        for(Answer a:q.getAns().values()){
+        for(Answer a:q.getAnswers().values()){
             if(a.getAnswerer().getUID().equals(HomePage.currentUser.getUID())){
                 return false;
             }

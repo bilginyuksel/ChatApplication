@@ -9,10 +9,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.HashMap;
 import java.util.List;
 
-import c.bilgin.chatapplication.Firebase;
 import c.bilgin.chatapplication.R;
 
 public class CustomAnswerAdapter extends ArrayAdapter<Answer> {
@@ -80,7 +78,7 @@ public class CustomAnswerAdapter extends ArrayAdapter<Answer> {
             @Override
             public void onClick(View v) {
                // a.updateRate();
-                currentQ.getAns().get(a.getUid()).updateRate();
+                currentQ.getAnswers().get(a.getUid()).updateRate();
                 new FirebaseAnswer().updateRate(a);
                 new FirebaseQuestion().addAnswer(currentQ);
                 new FirebaseFollow().addAnswer(currentQ);

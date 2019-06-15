@@ -30,7 +30,7 @@ public class FirebaseQuestion extends Firebase {
                     for(DataSnapshot s : sp1.getChildren()){
                         ans.put(s.getKey(),s.getValue(Answer.class));
                     }
-                    q.setAns(ans);
+                    q.setAnswers(ans);
                     someArr.add(q);
                 }
 
@@ -61,7 +61,7 @@ public class FirebaseQuestion extends Firebase {
     }
 
     public void addAnswer(Question q){
-        getDatabaseReference().child(q.getUid()).child("answers").setValue(q.getAns());
+        getDatabaseReference().child(q.getUid()).child("answers").setValue(q.getAnswers());
     }
 
 

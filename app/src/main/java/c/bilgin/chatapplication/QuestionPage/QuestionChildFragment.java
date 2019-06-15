@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -21,9 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import c.bilgin.chatapplication.HomePage;
 import c.bilgin.chatapplication.R;
-import c.bilgin.chatapplication.UserOP.FirebaseUser;
 
 public class QuestionChildFragment extends Fragment {
 
@@ -79,7 +76,7 @@ public class QuestionChildFragment extends Fragment {
         adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              if(arrQuestion.get(position).getAns()!=null){
+              if(arrQuestion.get(position).getAnswers()!=null){
                   DialogShowAnswers d =new DialogShowAnswers(mContext,arrQuestion.get(position));
                   d.show();
               }else{

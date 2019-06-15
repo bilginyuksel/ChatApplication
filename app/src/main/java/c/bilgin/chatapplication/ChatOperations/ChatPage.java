@@ -46,6 +46,8 @@ public class ChatPage extends AppCompatActivity {
         chatImage = (ImageView)findViewById(R.id.chatImage);
 
 
+
+
         //configuration stuff
         if(isPersonal()){
             //if personal message
@@ -88,9 +90,12 @@ public class ChatPage extends AppCompatActivity {
         Message m = new Message(message, HomePage.currentUser);
         if(isPersonal()){
             new FirebasePersonalChat().sendMessage(currentPersonalChat,m);
+            lstViewMessages.setSelection(chatPersonalAdapter.getCount());
         }else{
             new FirebaseGroupChat().sendMessage(currentGroupChat,m);
+            lstViewMessages.setSelection(chatGroupAdapter.getCount());
         }
+
     }
 
 
@@ -114,6 +119,8 @@ public class ChatPage extends AppCompatActivity {
 
         chatPersonalAdapter = new ChatPersonalAdapter(this,messages);
         lstViewMessages.setAdapter(chatPersonalAdapter);
+        lstViewMessages.setSelection(chatPersonalAdapter.getCount());
+
     }
 
 
@@ -135,6 +142,7 @@ public class ChatPage extends AppCompatActivity {
 
         chatGroupAdapter = new ChatGroupAdapter(this,msgAdap);
         lstViewMessages.setAdapter(chatGroupAdapter);
+        lstViewMessages.setSelection(chatGroupAdapter.getCount());
     }
 
 
