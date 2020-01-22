@@ -1,4 +1,0 @@
-Build pushnotification trigger with functions to any device
-Develop god mode.. just for adding news and checking registered users and their informations.
-Edit profile page maybe than it is going to over. if chat notifications okay and you got the way how
-you can implement it then do it for followed questions!
